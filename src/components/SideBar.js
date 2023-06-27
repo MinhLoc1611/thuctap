@@ -86,6 +86,15 @@ export default function SideBar() {
                                     <span className='ms-3'>Giám sát học tập</span>
                                 </NavLink>
                             )
+                        },
+                        {
+                            key: '7',
+                            label: (
+                                <NavLink className='side-bar-item' to='/daotrang'>
+                                    <span><i className="fas fa-yin-yang"></i></span>
+                                    <span className='ms-3'>Đạo tràng</span>
+                                </NavLink>
+                            )
                         }
                     ]
                 },
@@ -99,7 +108,7 @@ export default function SideBar() {
                     ),
                     children: [
                         {
-                            key: '7',
+                            key: '8',
                             label: (
                                 <a className='side-bar-item' href>
                                     <span><i className="fas fa-pen"></i></span>
@@ -119,7 +128,7 @@ export default function SideBar() {
                     ),
                     children: [
                         {
-                            key: '8',
+                            key: '9',
                             label: (
                                 <a className='side-bar-item' href>
                                     <span className='ms-3'>Nhóm việc của tôi</span>

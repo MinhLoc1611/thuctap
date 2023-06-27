@@ -88,7 +88,7 @@ export default function UpdateProfile(props) {
     return moment(item).format(dateFormat);
   };
   const dateFormat = "DD/MM/YYYY";
-  const [form] = Form.useForm();
+  
   return (
     <Modal
       width={700}
@@ -100,7 +100,6 @@ export default function UpdateProfile(props) {
       <Form
         layout="vertical"
         onSubmitCapture={formik.handleSubmit}
-        onReset={()=>form.resetFields()}
         labelCol={{
           span: 8,
         }}
@@ -108,7 +107,7 @@ export default function UpdateProfile(props) {
           span: 24,
         }}
         style={{
-          maxWidth: 900,
+          maxWidth: 700,
         }}
       >
         <Form.Item>
@@ -213,13 +212,14 @@ export default function UpdateProfile(props) {
           >
             <DatePicker
               defaultValue={
-                phatTuEdit.ngaySinh !== null
+                phatTuEdit.ngaySinh !== null && "" && undefined
                   ? dayjs(
-                      moment(phatTuEdit.ngaySinh).format(dateFormat),
+                      formatMoment(phatTuEdit.ngaySinh),
                       dateFormat
                     )
                   : ""}
               format={dateFormat}
+              onChange={handleChangeDate("ngaySinh")}
             />
           </Form.Item>
           <Form.Item
@@ -231,14 +231,15 @@ export default function UpdateProfile(props) {
           >
             <DatePicker
               defaultValue={
-                phatTuEdit.ngayXuatGia !== null
+                phatTuEdit.ngayXuatGia !== null && "" && undefined
                   ? dayjs(
-                      moment(phatTuEdit.ngayXuatGia).format(dateFormat),
+                      formatMoment(phatTuEdit.ngayXuatGia),
                       dateFormat
                     )
                   : ""
               }
               format={dateFormat}
+              onChange={handleChangeDate("ngayXuatGia")}
             />
           </Form.Item>
         </Form.Item>
@@ -301,9 +302,9 @@ export default function UpdateProfile(props) {
           >
             <DatePicker
               defaultValue={
-                phatTuEdit.ngayHoanTuc !== null
+                phatTuEdit.ngayHoanTuc !== null && "" && undefined
                   ? dayjs(
-                      moment(phatTuEdit.ngayHoanTuc).format(dateFormat),
+                      formatMoment(phatTuEdit.ngayHoanTuc),
                       dateFormat
                     )
                   : ""
