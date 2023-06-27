@@ -1,6 +1,6 @@
 import callApi from "../../config/sever"
 import {notifiFunction} from '../../config/notifiFunction'
-import { GET_ARR_DAO_TRANG, SET_DAO_TRANG_EDIT } from "../types/daoTrangType";
+import { GET_ARR_DAO_TRANG, SET_ARR_CHU_TRI, SET_DAO_TRANG_EDIT } from "../types/daoTrangType";
 
 export const getArrDaoTrangAction = (param) =>{
     return async dispatch =>{
@@ -51,5 +51,15 @@ export const updateDaoTrangAction = (item) =>{
         } else{
             notifiFunction("warning", result.message);
         }
+    }
+}
+
+export const getArrChuTriAction = () =>{
+    return async dispatch =>{
+        const data = await callApi.getArrChuTri();
+        dispatch({
+            type:SET_ARR_CHU_TRI,
+            arrChuTri:data
+        })
     }
 }

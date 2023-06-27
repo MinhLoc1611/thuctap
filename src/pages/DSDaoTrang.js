@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { deleteDaoTrangAction, getArrDaoTrangAction, setDaoTrangEditAction } from "../redux/actions/daoTrangAction";
+import { deleteDaoTrangAction, getArrChuTriAction, getArrDaoTrangAction, setDaoTrangEditAction } from "../redux/actions/daoTrangAction";
 import ModalDaoTrang from "../components/ModalDaoTrang";
 
 const tableStyle = {
@@ -23,7 +23,7 @@ const buttonStyle = {
 export default function DSDaoTrang() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title,setTitle] = useState();
-  const { arrDaoTrang, paramDaoTrang } = useSelector(
+  const { arrDaoTrang, paramDaoTrang, arrChuTri } = useSelector(
     (state) => state.daoTrangReducer
   );
   const dispatch = useDispatch();
@@ -60,6 +60,7 @@ export default function DSDaoTrang() {
 
   useEffect(() => {
     dispatch(getArrDaoTrangAction(paramDaoTrang))
+    dispatch(getArrChuTriAction())
   }, [dispatch, paramDaoTrang]);
 
   const showModal = () => {
@@ -113,6 +114,7 @@ export default function DSDaoTrang() {
         handleCancel={handleCancel}
         param={paramDaoTrang}
         title={title}
+        arrChuTri={arrChuTri}
       />
       <div>
         <span>Home</span>

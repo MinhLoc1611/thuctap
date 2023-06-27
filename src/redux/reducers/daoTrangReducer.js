@@ -1,4 +1,4 @@
-import { GET_ARR_DAO_TRANG, SET_DAO_TRANG_EDIT } from "../types/daoTrangType";
+import { GET_ARR_DAO_TRANG, SET_ARR_CHU_TRI, SET_DAO_TRANG_EDIT } from "../types/daoTrangType";
 
 const stateDefault = {
   arrDaoTrang: {
@@ -75,6 +75,16 @@ const stateDefault = {
     thoiGian: "",
     daKetThuc: "",
   },
+  arrChuTri: [
+    {
+      id: 10,
+      ten: "Hoang Van J",
+    },
+    {
+      id: 11,
+      ten: "Nguyen Thi K",
+    },
+  ],
 };
 
 export const daoTrangReducer = (state = stateDefault, action) => {
@@ -84,6 +94,9 @@ export const daoTrangReducer = (state = stateDefault, action) => {
     }
     case SET_DAO_TRANG_EDIT: {
       return { ...state, daoTrangEdit: action.daoTrangEdit };
+    }
+    case SET_ARR_CHU_TRI:{
+        return {...state, arrChuTri:action.arrChuTri}
     }
     // eslint-disable-next-line no-fallthrough
     default:

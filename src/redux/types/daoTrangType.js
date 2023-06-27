@@ -1,2 +1,3 @@
 export const GET_ARR_DAO_TRANG = 'GET_ARR_DAO_TRANG';
 export const SET_DAO_TRANG_EDIT = 'SET_DAO_TRANG_EDIT';
+export const SET_ARR_CHU_TRI = 'SET_ARR_CHU_TRI';

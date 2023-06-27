@@ -12,7 +12,7 @@ const dateFormat = "DD/MM/YYYY";
 
 export default function ModalDaoTrang(props) {
   const { daoTrangEdit } = useSelector((state) => state.daoTrangReducer);
-  const { title, isModalOpen, handleCancel, param } = props;
+  const { title, isModalOpen, handleCancel, param, arrChuTri } = props;
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -98,20 +98,11 @@ export default function ModalDaoTrang(props) {
             <Select
               value={formik.values.nguoiChuTriId}
               onChange={handleChangeSelect("nguoiChuTriId")}
-              options={[
-                {
-                  value: 10,
-                  label: "Hoang Van J",
-                },
-                {
-                  value: 11,
-                  label: "Nguyen Thi K",
-                },
-                {
-                  value: 12,
-                  label: "Tran Van L",
-                },
-              ]}
+              options={arrChuTri.map((item,index)=>{
+                return {value:item.id,
+                        label:item.ten
+                }
+              })}
             />
           </Form.Item>
         </Form.Item>

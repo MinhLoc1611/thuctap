@@ -35,6 +35,10 @@ const callApi = {
   deleteDaoTrang:(id)=>{
     const url = `api/DaoTrang/xoadaotrang?daotrangId=${id}`;
     return axiosClient.delete(url)
+  },
+  getArrChuTri:()=>{
+    const url = "api/DaoTrang/danhsachchutri";
+    return axiosClient.get(url)
   }
 };
 
