@@ -43,14 +43,18 @@ export default function DSDaoTrang() {
   };
 
   const onFinish = (values) => {
-    const date = moment(values.thoiGian).format("MM/YYYY");
+    let date = "";
+    if(values.thoiGian !== null && "" && undefined){
+        date = moment(values.thoiGian).format("MM/YYYY");
+    } 
+    
     let newParam = {
       ...values,
       pageNumber: 1,
       pageSize: 25,
       thoiGian: date,
     };
-    console.log({ newParam });
+    dispatch(getArrDaoTrangAction(newParam))
   };
 
   const handleChangePage = (value) => {

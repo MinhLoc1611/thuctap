@@ -25,8 +25,9 @@ export default function ModalDaoTrang(props) {
       noiDung: daoTrangEdit?.noiDung,
     },
     onSubmit: (values) => {
-      const newDaoTrang = { ...values, id: daoTrangEdit.id };
+      let newDaoTrang = { ...values};
       if(title === "Chỉnh sửa đạo tràng"){
+        newDaoTrang.id = daoTrangEdit.id
         dispatch(updateDaoTrangAction(newDaoTrang))
       } else if(title === "Thêm đạo tràng"){
         dispatch(createDaoTrangAction(newDaoTrang))
