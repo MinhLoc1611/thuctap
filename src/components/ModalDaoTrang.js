@@ -5,7 +5,11 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { createDaoTrangAction, getArrDaoTrangAction, updateDaoTrangAction } from "../redux/actions/daoTrangAction";
+import {
+  createDaoTrangAction,
+  getArrDaoTrangAction,
+  updateDaoTrangAction,
+} from "../redux/actions/daoTrangAction";
 
 dayjs.extend(customParseFormat);
 const dateFormat = "DD/MM/YYYY";
@@ -25,14 +29,15 @@ export default function ModalDaoTrang(props) {
       noiDung: daoTrangEdit?.noiDung,
     },
     onSubmit: (values) => {
-      let newDaoTrang = { ...values};
-      if(title === "Chỉnh sửa đạo tràng"){
-        newDaoTrang.id = daoTrangEdit.id
+      let newDaoTrang = { ...values };
+      if (title === "Chỉnh sửa đạo tràng") {
+        newDaoTrang.id = daoTrangEdit.id;
         dispatch(updateDaoTrangAction(newDaoTrang))
-      } else if(title === "Thêm đạo tràng"){
+      } else if (title === "Thêm đạo tràng") {
         dispatch(createDaoTrangAction(newDaoTrang))
       }
       dispatch(getArrDaoTrangAction(param))
+      handleCancel();
     },
   });
   const handleChangeDate = (name) => {
@@ -99,10 +104,8 @@ export default function ModalDaoTrang(props) {
             <Select
               value={formik.values.nguoiChuTriId}
               onChange={handleChangeSelect("nguoiChuTriId")}
-              options={arrChuTri.map((item,index)=>{
-                return {value:item.id,
-                        label:item.ten
-                }
+              options={arrChuTri.map((item, index) => {
+                return { value: item.id, label: item.ten };
               })}
             />
           </Form.Item>
