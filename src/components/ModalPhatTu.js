@@ -74,7 +74,7 @@ export default function UpdateProfile(props) {
  
   const handleChangeDate = (name) => {
     return (value) => {
-      let date = formatMoment(value.$d);
+      let date = moment(value.$d).format("YYYY/MM/DD");
       formik.setFieldValue(name, date);
     };
   };
