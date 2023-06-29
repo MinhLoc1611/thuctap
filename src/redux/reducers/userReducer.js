@@ -153,6 +153,7 @@ export const userReducer = (state = stateDefault, action) => {
       const { userLogin } = action;
       localStorage.setItem(USER_LOGIN, JSON.stringify(userLogin.data));
       localStorage.setItem(TOKEN, userLogin.token);
+      return {...state,userLogin:userLogin.data}
     }
 
     // eslint-disable-next-line no-fallthrough
