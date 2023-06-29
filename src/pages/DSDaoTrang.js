@@ -45,7 +45,7 @@ export default function DSDaoTrang() {
   const onFinish = (values) => {
     let date = "";
     if(values.thoiGian !== null && "" && undefined){
-        date = moment(values.thoiGian).format("YYYY/MM");
+        date = moment(values.thoiGian).format("YYYY-MM");
     } 
     
     let newParam = {
