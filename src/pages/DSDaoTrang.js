@@ -23,7 +23,7 @@ const buttonStyle = {
 export default function DSDaoTrang() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title,setTitle] = useState();
-  const { arrDaoTrang, paramDaoTrang, arrChuTri } = useSelector(
+  const { arrDaoTrang, paramDaoTrang, arrChuTri, dataDaoTrang } = useSelector(
     (state) => state.daoTrangReducer
   );
   const dispatch = useDispatch();
@@ -48,24 +48,22 @@ export default function DSDaoTrang() {
         date = moment(values.thoiGian).format("YYYY-MM");
     } 
     
-    let newParam = {
+    let newData = {
       ...values,
-      pageNumber: 1,
-      pageSize: 25,
       thoiGian: date,
     };
-    dispatch(getArrDaoTrangAction(newParam))
+    dispatch(getArrDaoTrangAction(paramDaoTrang, newData))
   };
 
   const handleChangePage = (value) => {
     const newParam = { ...paramDaoTrang, pageNumber: value };
-    dispatch(getArrDaoTrangAction(newParam));
+    dispatch(getArrDaoTrangAction(newParam, dataDaoTrang));
   };
 
   useEffect(() => {
-    dispatch(getArrDaoTrangAction(paramDaoTrang))
+    dispatch(getArrDaoTrangAction(paramDaoTrang, dataDaoTrang))
     dispatch(getArrChuTriAction())
-  }, [dispatch, paramDaoTrang]);
+  }, [dispatch, paramDaoTrang, dataDaoTrang]);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -99,7 +97,7 @@ export default function DSDaoTrang() {
               className="ms-3"
               onClick={() => {
                 dispatch(deleteDaoTrangAction(item.id))
-                dispatch(getArrDaoTrangAction(paramDaoTrang))
+                dispatch(getArrDaoTrangAction(paramDaoTrang, dataDaoTrang))
               }}
               style={{ backgroundColor: "red", color: "white" }}
               shape="circle"
@@ -117,6 +115,7 @@ export default function DSDaoTrang() {
         isModalOpen={isModalOpen}
         handleCancel={handleCancel}
         param={paramDaoTrang}
+        data={dataDaoTrang}
         title={title}
         arrChuTri={arrChuTri}
       />

@@ -2,12 +2,12 @@ import callApi from "../../config/sever"
 import {notifiFunction} from '../../config/notifiFunction'
 import { GET_ARR_DAO_TRANG, SET_ARR_CHU_TRI, SET_DAO_TRANG_EDIT } from "../types/daoTrangType";
 
-export const getArrDaoTrangAction = (param) =>{
+export const getArrDaoTrangAction = (param, data) =>{
     return async dispatch =>{
-        const data = await callApi.getArrDaoTrang(param);
+        const result = await callApi.getArrDaoTrang(param, data);
         dispatch({
             type:GET_ARR_DAO_TRANG,
-            arrDaoTrang:data
+            arrDaoTrang:result
         })
     }
 }

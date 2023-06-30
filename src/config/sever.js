@@ -20,9 +20,9 @@ const callApi = {
     const url = "api/Auth/Register";
     return axiosClient.post(url, data);
   },
-  getArrDaoTrang: (param) => {
-    const url = `api/DaoTrang/laydanhsach?ten=${param.ten}&thoiGian=${param.thoiGian}&daKetThuc=${param.daKetThuc}&PageSize=${param.pageSize}&PageNumber=${param.pageNumber}`;
-    return axiosClient.get(url);
+  getArrDaoTrang: (param, data) => {
+    const url = `api/DaoTrang/laydanhsach?PageSize=${param.pageSize}&PageNumber=${param.pageNumber}`;
+    return axiosClient.post(url, data);
   },
   createDaoTrang:(item)=>{
     const url = "api/DaoTrang/themdaotrang";

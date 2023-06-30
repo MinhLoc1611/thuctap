@@ -71,6 +71,8 @@ const stateDefault = {
   paramDaoTrang: {
     pageNumber: 1,
     pageSize: 25,
+  },
+  dataDaoTrang:{
     ten: "",
     thoiGian: "",
     daKetThuc: "",

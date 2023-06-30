@@ -16,7 +16,7 @@ const dateFormat = "DD/MM/YYYY";
 
 export default function ModalDaoTrang(props) {
   const { daoTrangEdit } = useSelector((state) => state.daoTrangReducer);
-  const { title, isModalOpen, handleCancel, param, arrChuTri } = props;
+  const { title, isModalOpen, handleCancel, param, arrChuTri, data } = props;
   const dispatch = useDispatch();
 
   const formik = useFormik({
@@ -36,7 +36,7 @@ export default function ModalDaoTrang(props) {
       } else if (title === "Thêm đạo tràng") {
         dispatch(createDaoTrangAction(newDaoTrang))
       }
-      dispatch(getArrDaoTrangAction(param))
+      dispatch(getArrDaoTrangAction(param,data))
       handleCancel();
     },
   });
