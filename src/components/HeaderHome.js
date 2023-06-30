@@ -72,18 +72,16 @@ export default function HeaderHome(props) {
           </div>
         ) : (
           <div>
-            <div>
-              <span
-                style={{
-                  color: "#3f414d",
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  marginRight: "12px",
-                }}
-              >
-                {userLogin.userName}
-              </span>
-            </div>
+            <span
+              style={{
+                color: "#3f414d",
+                fontSize: "16px",
+                fontWeight: "600",
+                marginRight: "12px",
+              }}
+            >
+              {userLogin.userName}
+            </span>
 
             <button
               className="btn"
