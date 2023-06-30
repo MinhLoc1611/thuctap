@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import _ from 'lodash'
+import _ from "lodash";
 import { TOKEN, USER_LOGIN } from "../redux/types/userType";
 import { history } from "../config/sever";
 
@@ -59,30 +59,42 @@ export default function HeaderHome(props) {
       <div className="d-flex align-items-center">
         {_.isEmpty(userLogin) ? (
           <div>
-            <button className="btn"><NavLink className="text-black" to='/login'>Login</NavLink></button>
-            <button className="btn"><NavLink className="text-black" to='/register'>Register</NavLink></button>
+            <button className="btn">
+              <NavLink className="text-black" to="/login">
+                Login
+              </NavLink>
+            </button>
+            <button className="btn">
+              <NavLink className="text-black" to="/register">
+                Register
+              </NavLink>
+            </button>
           </div>
         ) : (
           <div>
-            <a href>
-              <div>
-                <span
-                  style={{
-                    color: "#3f414d",
-                    fontSize: "16px",
-                    fontWeight: "600",
-                    marginRight: "12px",
-                  }}
-                >
-                  {userLogin.userName}
-                </span>
-              </div>
-            </a>
-            <button className="btn" onClick={()=>{
-                 localStorage.removeItem(USER_LOGIN);
-                 localStorage.removeItem(TOKEN);
-                 history.push('/')
-            }}>Logout</button>
+            <div>
+              <span
+                style={{
+                  color: "#3f414d",
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  marginRight: "12px",
+                }}
+              >
+                {userLogin.userName}
+              </span>
+            </div>
+
+            <button
+              className="btn"
+              onClick={() => {
+                localStorage.removeItem(USER_LOGIN);
+                localStorage.removeItem(TOKEN);
+                history.push("/");
+              }}
+            >
+              Logout
+            </button>
           </div>
         )}
 
