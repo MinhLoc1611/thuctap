@@ -5,8 +5,8 @@ const stateDefault = {
     pagination: {
       pageSize: 5,
       pageNumber: 1,
-      totalCount: 180,
-      totalPage: 37,
+      totalCount: 5,
+      totalPage: 1,
     },
     data: [
       {
