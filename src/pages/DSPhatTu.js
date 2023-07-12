@@ -241,23 +241,6 @@ export default function DSPhatTu() {
               options={setPage()}
             />
           </div>
-          <div className="d-flex">
-            <div className="sap-xep">
-              <Select
-                defaultValue="sapXep"
-                style={{
-                  width: 100,
-                }}
-                bordered={false}
-                options={[
-                  {
-                    value: "sapXep",
-                    label: "Sắp xếp",
-                  },
-                ]}
-              />
-            </div>
-          </div>
         </div>
         <table
           style={{ fontSize: 16 }}

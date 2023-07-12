@@ -3,8 +3,8 @@ import { Button, Modal, Form, Input, DatePicker, Select } from "antd";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import moment from "moment";
-import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import { updatePhatTu } from "../redux/actions/userAction";
 
 dayjs.extend(customParseFormat);
@@ -31,29 +31,29 @@ export default function UpdateProfile(props) {
     ngayXuatGia,
     ngayHoanTuc,
   } = phatTuEdit;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     enableReinitialize: true,
-    initialValues:{
-        daHoanTuc,
-        email,
-        gioiTinh,
-        ho,
-        phapDanh,
-        soDienThoai,
-        ten,
-        tenDem,
-        ngaySinh,
-    ngayXuatGia,
-    ngayHoanTuc,
-      },
-      onSubmit:(values) =>{
-        const newPhatTu = {...values,id:phatTuEdit.id}
-        dispatch(updatePhatTu(newPhatTu, param))
-        handleCancel()
-      }
-  })
+    initialValues: {
+      daHoanTuc,
+      email,
+      gioiTinh,
+      ho,
+      phapDanh,
+      soDienThoai,
+      ten,
+      tenDem,
+      ngaySinh,
+      ngayXuatGia,
+      ngayHoanTuc,
+    },
+    onSubmit: (values) => {
+      const newPhatTu = { ...values, id: phatTuEdit.id };
+      dispatch(updatePhatTu(newPhatTu, param));
+      handleCancel();
+    },
+  });
 
   const [imgSrc, setImgSrc] = useState(phatTuEdit.anhChup);
   const handleChangeFile = (e) => {
@@ -71,24 +71,24 @@ export default function UpdateProfile(props) {
       };
     }
   };
- 
+
   const handleChangeDate = (name) => {
     return (value) => {
       let date = moment(value.$d).format("YYYY-MM-DD");
       formik.setFieldValue(name, date);
     };
   };
-  const handleChangeSelect = (name) =>{
-    return (value) =>{
-        formik.setFieldValue(name,value)
-    }
-  }
+  const handleChangeSelect = (name) => {
+    return (value) => {
+      formik.setFieldValue(name, value);
+    };
+  };
 
   const formatMoment = (item) => {
     return moment(item).format(dateFormat);
   };
   const dateFormat = "DD/MM/YYYY";
-  
+
   return (
     <Modal
       width={700}
@@ -140,7 +140,11 @@ export default function UpdateProfile(props) {
             }}
             label="Họ"
           >
-            <Input name="ho" onChange={formik.handleChange} value={formik.values.ho}/>
+            <Input
+              name="ho"
+              onChange={formik.handleChange}
+              value={formik.values.ho}
+            />
           </Form.Item>
           <Form.Item
             style={{
@@ -150,7 +154,11 @@ export default function UpdateProfile(props) {
             }}
             label="Tên đệm"
           >
-            <Input name="tenDem" onChange={formik.handleChange} value={formik.values.tenDem}/>
+            <Input
+              name="tenDem"
+              onChange={formik.handleChange}
+              value={formik.values.tenDem}
+            />
           </Form.Item>
           <Form.Item
             style={{
@@ -158,9 +166,12 @@ export default function UpdateProfile(props) {
               width: "calc(33% - 16px)",
             }}
             label="Tên"
-            
           >
-            <Input name="ten" onChange={formik.handleChange} value={formik.values.ten}/>
+            <Input
+              name="ten"
+              onChange={formik.handleChange}
+              value={formik.values.ten}
+            />
           </Form.Item>
         </Form.Item>
         <Form.Item
@@ -175,7 +186,11 @@ export default function UpdateProfile(props) {
             }}
             label="Email"
           >
-            <Input name="email" onChange={formik.handleChange} value={formik.values.email}/>
+            <Input
+              name="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
           </Form.Item>
           <Form.Item
             style={{
@@ -185,7 +200,11 @@ export default function UpdateProfile(props) {
             }}
             label="Pháp danh"
           >
-            <Input name="phapDanh" onChange={formik.handleChange} value={formik.values.phapDanh}/>
+            <Input
+              name="phapDanh"
+              onChange={formik.handleChange}
+              value={formik.values.phapDanh}
+            />
           </Form.Item>
         </Form.Item>
         <Form.Item
@@ -200,7 +219,11 @@ export default function UpdateProfile(props) {
             }}
             label="Số điện thoại"
           >
-            <Input name="soDienThoai" onChange={formik.handleChange} value={formik.values.soDienThoai}/>
+            <Input
+              name="soDienThoai"
+              onChange={formik.handleChange}
+              value={formik.values.soDienThoai}
+            />
           </Form.Item>
           <Form.Item
             style={{
@@ -213,11 +236,9 @@ export default function UpdateProfile(props) {
             <DatePicker
               defaultValue={
                 phatTuEdit.ngaySinh !== null && "" && undefined
-                  ? dayjs(
-                      formatMoment(phatTuEdit.ngaySinh),
-                      dateFormat
-                    )
-                  : ""}
+                  ? dayjs(formatMoment(phatTuEdit.ngaySinh), dateFormat)
+                  : ""
+              }
               format={dateFormat}
               onChange={handleChangeDate("ngaySinh")}
             />
@@ -232,10 +253,7 @@ export default function UpdateProfile(props) {
             <DatePicker
               defaultValue={
                 phatTuEdit.ngayXuatGia !== null && "" && undefined
-                  ? dayjs(
-                      formatMoment(phatTuEdit.ngayXuatGia),
-                      dateFormat
-                    )
+                  ? dayjs(formatMoment(phatTuEdit.ngayXuatGia), dateFormat)
                   : ""
               }
               format={dateFormat}
@@ -256,8 +274,8 @@ export default function UpdateProfile(props) {
             label="Giới tính"
           >
             <Select
-            value={formik.values.gioiTinh}
-            onChange={handleChangeSelect("gioiTinh")}
+              value={formik.values.gioiTinh}
+              onChange={handleChangeSelect("gioiTinh")}
               options={[
                 {
                   value: 1,
@@ -279,8 +297,8 @@ export default function UpdateProfile(props) {
             label="Trạng thái phật tử"
           >
             <Select
-           value={formik.values.daHoanTuc}
-            onChange={handleChangeSelect("daHoanTuc")}
+              value={formik.values.daHoanTuc}
+              onChange={handleChangeSelect("daHoanTuc")}
               options={[
                 {
                   value: false,
@@ -303,10 +321,7 @@ export default function UpdateProfile(props) {
             <DatePicker
               defaultValue={
                 phatTuEdit.ngayHoanTuc !== null && "" && undefined
-                  ? dayjs(
-                      formatMoment(phatTuEdit.ngayHoanTuc),
-                      dateFormat
-                    )
+                  ? dayjs(formatMoment(phatTuEdit.ngayHoanTuc), dateFormat)
                   : ""
               }
               format={dateFormat}
